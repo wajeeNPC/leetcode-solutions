@@ -1,23 +1,24 @@
 class Solution(object):
-    def twoSum(self, nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: List[int]
-        """
 
+    def twoSumV1(self , nums , target) :
+        for i in range(len(nums)):
+            for j  in range(i + 1 , len(nums)):
+                if target == nums[i] + nums[j] :
+                    return [i , j]
+        return []
 
-        pair_index = {}
-        for i , num in enumerate(nums):
-            diff = target - num
-            if diff in pair_index:
-                return [ i , pair_index[diff]]
-            pair_index[num] = i
-    
-# Testing the function
+    def twoSumV2(self , nums , target) :
+            pair_index = {}
+            for index , value in enumerate(nums):
+                 diff = target - value
+                 if diff in pair_index:
+                      return [ index , pair_index[diff]]
+                 pair_index[value] = index  
+            return []
+
 nums = [2, 7, 11, 15]
 target = 9
 
 solution = Solution()
-result = solution.twoSum(nums, target) 
-print(result)  
+result = solution.twoSumV2(nums, target) 
+print(result) 
